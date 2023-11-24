@@ -341,6 +341,9 @@ class Unet(nn.Module):
 
         # layers
 
+        # downs have multiple of these module lists. This correspond to the Unet. Each downsample is a conv2d that can reduce the dimension. 
+        # Next, we define the attention module, which the DDPM authors added in between the convolutional blocks. 
+        # (since attention is added in between the convolution block, I suppose the following makes sense. )
         self.downs = nn.ModuleList([])
         self.ups = nn.ModuleList([])
         num_resolutions = len(in_out)
